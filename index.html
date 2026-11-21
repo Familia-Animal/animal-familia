@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#203f30">
+<meta name="description" content="Familia Animal: información, orientación y recursos para proteger a los animales y promover su bienestar.">
+<title>Familia Animal | Protección y bienestar animal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--green:#315d46;
+--dark:#203f30;
+--light:#e8eee5;
+--cream:#f7f5ed;
+--white:#fff;
+--text:#28352d;
+--muted:#707b71;
+--orange:#d68b55;
+--shadow:0 15px 40px rgba(35,60,43,.09);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
+img{width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1150px,90%);margin:auto}
+section{padding:90px 0}
+.section-label{display:inline-block;color:var(--green);background:var(--light);padding:7px 15px;border-radius:30px;font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin-bottom:18px;color:var(--dark)}
+.section-description{color:var(--muted);max-width:720px;margin-bottom:38px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:white;padding:13px 23px;border-radius:50px;font-weight:700;border:2px solid var(--green);transition:.3s}
+.btn:hover{background:var(--dark);border-color:var(--dark);transform:translateY(-3px)}
+.btn-outline{background:transparent;color:var(--green)}
+.btn-outline:hover{color:white}
+.small-note{font-size:.84rem;color:var(--muted);margin-top:18px}
+
+/* NAV */
+
+header{position:sticky;top:0;z-index:1000;background:rgba(247,245,237,.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(49,93,70,.1)}
+.navbar{min-height:78px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;color:var(--dark)}
+.logo-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--green);color:white;font-size:22px}
+.nav-links{display:flex;align-items:center;gap:20px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:700;color:#526156;transition:.2s}
+.nav-links a:hover{color:var(--orange)}
+.menu-btn{display:none;background:none;border:0;font-size:27px;color:var(--green);cursor:pointer}
+
+/* HERO */
+
+.hero{min-height:680px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(21,44,30,.88),rgba(21,44,30,.23)),url("https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=2000&q=85") center/cover;color:white}
+.hero-content{max-width:700px;padding:100px 0}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:40px;margin-bottom:24px;font-size:.85rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);line-height:1.04;margin-bottom:25px}
+.hero h1 span{color:#e9bd8c}
+.hero p{max-width:590px;font-size:1.08rem;color:rgba(255,255,255,.9);margin-bottom:32px}
+.hero .btn{background:#e2ae7d;border-color:#e2ae7d;color:#253b2d}
+.hero .btn:hover{background:white;border-color:white}
+
+/* GENERAL GRIDS */
+
+.two-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}
+.photo{height:420px;border-radius:26px;overflow:hidden;box-shadow:var(--shadow)}
+.photo img{height:100%;transition:.6s}
+.photo:hover img{transform:scale(1.04)}
+.copy p{color:var(--muted);margin-bottom:16px}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px}
+.card{background:white;border-radius:21px;overflow:hidden;box-shadow:var(--shadow);transition:.3s}
+.card:hover{transform:translateY(-7px)}
+.card img{height:220px}
+.card-content{padding:24px}
+.card h3{font-family:'Playfair Display',serif;color:var(--dark);font-size:1.35rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.93rem}
+.soft{background:#eaece3}
+
+/* FAMILY */
+
+.family-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}
+.family-image{height:440px;border-radius:27px;overflow:hidden;box-shadow:var(--shadow)}
+.family-image img{height:100%;transition:.6s}
+.family-image:hover img{transform:scale(1.04)}
+
+/* HELP */
+
+.help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.help-card{background:white;padding:27px;border-radius:21px;box-shadow:var(--shadow);transition:.3s}
+.help-card:hover{transform:translateY(-5px)}
+.help-icon{width:54px;height:54px;background:var(--light);border-radius:16px;display:grid;place-items:center;font-size:26px;margin-bottom:17px}
+.help-card h3{font-family:'Playfair Display',serif;color:var(--dark);margin-bottom:9px}
+.help-card p{font-size:.91rem;color:var(--muted)}
+
+/* ADOPTION */
+
+.adoption{background:var(--dark);color:white}
+.adoption .section-title{color:white}
+.adoption .section-label{background:rgba(255,255,255,.13);color:#e5bd91}
+.adoption .section-description{color:rgba(255,255,255,.75)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border:1px solid rgba(255,255,255,.2);padding:24px;border-radius:19px;background:rgba(255,255,255,.06)}
+.step-number{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#dfae7b;color:#263c2d;font-weight:800;margin-bottom:16px}
+.step h3{margin-bottom:9px}
+.step p{color:rgba(255,255,255,.75);font-size:.88rem}
+
+/* REQUIREMENTS */
+
+.requirements-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.requirements-image{height:460px;border-radius:26px;overflow:hidden;box-shadow:var(--shadow)}
+.requirements-image img{height:100%}
+.check-list{list-style:none;display:grid;gap:14px}
+.check-list li{display:flex;align-items:flex-start;gap:12px;color:var(--muted)}
+.check-list li span{color:var(--green);font-weight:900}
+
+/* CARE */
+
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.care-item{background:white;padding:24px;border-radius:19px;box-shadow:var(--shadow)}
+.care-item h3{color:var(--dark);margin-bottom:8px}
+.care-item p{font-size:.9rem;color:var(--muted)}
+
+/* ANIMALS */
+
+.animal-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.animal-card{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow)}
+.animal-card img{height:270px}
+.animal-card div{padding:25px}
+.animal-card h3{font-family:'Playfair Display',serif;color:var(--dark);font-size:1.5rem;margin-bottom:12px}
+.animal-card p{color:var(--muted);margin-bottom:10px}
+
+/* ABUSE AND REPORTING */
+
+.warning-section{background:#fff7ed}
+.warning-box{background:white;border-left:5px solid #c7794e;border-radius:15px;padding:24px;margin-bottom:22px;box-shadow:var(--shadow)}
+.warning-box h3{color:#965535;margin-bottom:9px}
+.warning-box p{color:var(--muted)}
+.report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.report-card{background:white;padding:24px;border-radius:19px;box-shadow:var(--shadow)}
+.report-card h3{color:var(--dark);margin-bottom:9px}
+.report-card p{font-size:.9rem;color:var(--muted)}
+
+/* ASSOCIATIONS */
+
+.association-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.association{background:white;border-radius:19px;padding:25px;box-shadow:var(--shadow)}
+.association h3{font-family:'Playfair Display',serif;color:var(--dark);font-size:1.3rem;margin-bottom:10px}
+.association p{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.association a,.text-link{color:var(--green);font-weight:700;text-decoration:underline}
+
+/* LEGAL */
+
+.law-list{display:grid;gap:15px}
+.law{background:white;padding:23px;border-radius:17px}
+.law h3{color:var(--dark);margin-bottom:7px}
+.law p{color:var(--muted);font-size:.93rem;margin-bottom:8px}
+.law a{color:var(--green);font-weight:700;text-decoration:underline}
+
+/* FAQ */
+
+.faq-container{max-width:850px}
+.faq{background:white;border-radius:15px;margin-bottom:13px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.04)}
+.faq-question{width:100%;padding:21px;display:flex;justify-content:space-between;align-items:center;gap:15px;text-align:left;border:0;background:white;color:var(--dark);font-weight:700;cursor:pointer}
+.faq-question span{font-size:1.3rem;transition:.3s}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer p{padding:0 21px 21px;color:var(--muted);font-size:.93rem}
+.faq.active .faq-question span{transform:rotate(45deg)}
+
+/* CTA AND FOOTER */
+
+.final-cta{padding:85px 0;text-align:center;background:linear-gradient(rgba(27,55,37,.87),rgba(27,55,37,.87)),url("https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=85") center/cover;color:white}
+.final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);margin-bottom:18px}
+.final-cta p{max-width:670px;margin:0 auto 27px;color:rgba(255,255,255,.82)}
+.final-cta .btn{background:#e2ae7d;border-color:#e2ae7d;color:var(--dark)}
+footer{background:#1b3024;color:white;padding:55px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;padding-bottom:35px}
+footer h3{margin-bottom:15px;color:#e4b98c}
+footer p,footer a{color:rgba(255,255,255,.72);font-size:.9rem}
+footer a:hover{color:white}
+.footer-links{display:grid;gap:9px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;text-align:center;color:rgba(255,255,255,.55);font-size:.8rem}
+
+/* REVEAL */
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+.nav-links{gap:11px}
+.nav-links a{font-size:.76rem}
+.cards-grid,.help-grid,.care-grid{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+section{padding:68px 0}
+.menu-btn{display:block}
+.nav-links{position:absolute;top:78px;left:0;width:100%;background:var(--cream);padding:20px 5%;display:none;flex-direction:column;align-items:flex-start;gap:17px;box-shadow:var(--shadow)}
+.nav-links.open{display:flex}
+.nav-links a{font-size:.95rem}
+.hero{min-height:610px;background-position:58% center}
+.hero-content{padding:75px 0}
+.two-grid,.family-grid,.requirements-grid{grid-template-columns:1fr;gap:30px}
+.photo,.family-image,.requirements-image{height:320px}
+.cards-grid,.help-grid,.care-grid,.animal-grid,.report-grid,.association-grid{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr 1fr}
+.footer-grid{grid-template-columns:1fr;gap:25px}
+}
+@media(max-width:430px){
+.steps{grid-template-columns:1fr}
+.hero h1{font-size:3rem}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+<a href="#inicio" class="logo">
+<span class="logo-icon">🐾</span>
+<span>Familia Animal</span>
+</a>
+<button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#familias">Familias</a></li>
+<li><a href="#adopcion">Adopción</a></li>
+<li><a href="#cuidados">Cuidados</a></li>
+<li><a href="#denuncia">Denuncias</a></li>
+<li><a href="#asociaciones">Asociaciones</a></li>
+<li><a href="#leyes">Leyes</a></li>
+</ul>
+</div>
+</header>
+
+<main>
+
+<!-- INICIO -->
+
+<section class="hero" id="inicio">
+<div class="container">
+<div class="hero-content reveal">
+<span class="hero-tag">🐾 Por una vida digna para todos los animales</span>
+<h1>Una familia se construye con <span>amor.</span></h1>
+<p>Los animales también sienten, necesitan cuidados y merecen vivir con respeto. En Familia Animal promovemos la adopción responsable, la protección y el bienestar animal.</p>
+<a href="#nosotros" class="btn">Conoce nuestra causa →</a>
+</div>
+</div>
+</section>
+
+<!-- NOSOTROS -->
+
+<section id="nosotros">
+<div class="container two-grid">
+<div class="photo reveal">
+<img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1100&q=85" alt="Perro acompañado por una persona" loading="lazy">
+</div>
+<div class="copy reveal">
+<span class="section-label">Quiénes somos</span>
+<h2 class="section-title">El bienestar animal comienza con nuestras acciones.</h2>
+<p>Familia Animal es un proyecto dedicado a crear conciencia sobre la importancia de proteger y respetar a los animales. Buscamos compartir información que ayude a las personas a comprender sus necesidades y responsabilidades.</p>
+<p>Creemos que cada animal merece alimento, agua, atención veterinaria, un ambiente adecuado y un trato digno.</p>
+<p>Nuestro propósito es fomentar una sociedad más consciente, responsable y comprometida con todos los seres vivos.</p>
+<a href="#cuidados" class="btn">Aprende a cuidarlos</a>
+</div>
+</div>
+</section>
+
+<!-- IMPORTANCIA -->
+
+<section style="background:#fff">
+<div class="container">
+<span class="section-label">Nuestra causa</span>
+<h2 class="section-title">¿Por qué debemos proteger a los animales?</h2>
+<p class="section-description">Los animales forman parte de nuestro entorno y tienen necesidades que debemos respetar. Su bienestar depende en gran medida de las decisiones y acciones de las personas.</p>
+
+<div class="cards-grid">
+<article class="card reveal">
+<img src="https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=800&q=85" alt="Perro descansando" loading="lazy">
+<div class="card-content">
+<h3>Son seres que sienten</h3>
+<p>Pueden experimentar dolor, miedo, tranquilidad y bienestar. Por eso necesitan un trato respetuoso y libre de violencia.</p>
+</div>
+</article>
+<article class="card reveal">
+<img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=85" alt="Gato en un hogar" loading="lazy">
+<div class="card-content">
+<h3>Dependen de nuestros cuidados</h3>
+<p>Los animales domésticos necesitan atención, alimentación, protección y condiciones adecuadas para vivir.</p>
+</div>
+</article>
+<article class="card reveal">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=85" alt="Paisaje natural" loading="lazy">
+<div class="card-content">
+<h3>Son parte de la naturaleza</h3>
+<p>Cada especie cumple una función en los ecosistemas. Proteger la biodiversidad también significa cuidar nuestro planeta.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- FAMILIAS -->
+
+<section class="soft" id="familias">
+<div class="container family-grid">
+<div class="copy reveal">
+<span class="section-label">Familias y animales</span>
+<h2 class="section-title">Un compañero también puede convertirse en familia.</h2>
+<p>La convivencia con un animal puede crear vínculos de cariño, confianza y compañía. Un perro o un gato no es un objeto ni un juguete: es un ser vivo que necesita atención durante toda su vida.</p>
+<p>Compartir el hogar con un animal implica responsabilidades. Toda la familia debe participar en sus cuidados, respetar sus necesidades y ofrecerle un ambiente tranquilo y seguro.</p>
+<p>Antes de recibir un animal en casa, es importante conversar sobre el tiempo, los gastos, el espacio y la dedicación que necesitará.</p>
+<a href="#adopcion" class="btn">Conoce la adopción responsable</a>
+</div>
+<div class="family-image reveal">
+<img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1100&q=85" alt="Perros conviviendo con una familia" loading="lazy">
+</div>
+</div>
+</section>
+
+<!-- FORMAS DE AYUDAR -->
+
+<section>
+<div class="container">
+<span class="section-label">Pequeñas acciones</span>
+<h2 class="section-title">Todos podemos ayudar.</h2>
+<p class="section-description">No necesitas tener un refugio o ser especialista para contribuir. Existen diferentes formas de mejorar la vida de los animales.</p>
+<div class="help-grid">
+<article class="help-card reveal"><div class="help-icon">🏠</div><h3>Adopta responsablemente</h3><p>Brinda un hogar a un animal que necesita una familia. Antes de adoptar, asegúrate de poder asumir ese compromiso.</p></article>
+<article class="help-card reveal"><div class="help-icon">🥣</div><h3>Apoya con alimento</h3><p>Colabora con refugios mediante donaciones de alimento, agua, artículos de limpieza y otros materiales necesarios.</p></article>
+<article class="help-card reveal"><div class="help-icon">📢</div><h3>Comparte información</h3><p>Difunde campañas de adopción, animales extraviados y consejos para promover el respeto animal.</p></article>
+<article class="help-card reveal"><div class="help-icon">🤝</div><h3>Apoya a los refugios</h3><p>Infórmate sobre organizaciones confiables y pregunta cómo puedes colaborar de acuerdo con tus posibilidades.</p></article>
+<article class="help-card reveal"><div class="help-icon">🩺</div><h3>Cuida su salud</h3><p>Las revisiones veterinarias, la prevención y la atención oportuna ayudan a mantener a los animales saludables.</p></article>
+<article class="help-card reveal"><div class="help-icon">❤️</div><h3>Respeta a todos</h3><p>Trata a los animales con paciencia. No participes en actos de crueldad y enseña a otras personas a respetarlos.</p></article>
+</div>
+</div>
+</section>
+
+<!-- ADOPCIÓN -->
+
+<section class="adoption" id="adopcion">
+<div class="container">
+<span class="section-label">Adopción responsable</span>
+<h2 class="section-title">Adoptar es una decisión para toda la vida.</h2>
+<p class="section-description">La adopción no debe ser una decisión impulsiva. Significa asumir el compromiso de cuidar, proteger y acompañar a un animal durante todas las etapas de su vida.</p>
+<div class="steps">
+<article class="step reveal"><div class="step-number">01</div><h3>Reflexiona</h3><p>Analiza si tienes tiempo, espacio y recursos para atender las necesidades de un animal.</p></article>
+<article class="step reveal"><div class="step-number">02</div><h3>Busca un refugio</h3><p>Acércate a una organización responsable y pregunta por los animales disponibles para adopción.</p></article>
+<article class="step reveal"><div class="step-number">03</div><h3>Conoce al animal</h3><p>Infórmate sobre su edad, personalidad, salud y necesidades antes de tomar una decisión.</p></article>
+<article class="step reveal"><div class="step-number">04</div><h3>Prepara su hogar</h3><p>Acondiciona un espacio seguro y organiza sus alimentos, accesorios y atención veterinaria.</p></article>
+</div>
+</div>
+</section>
+
+<!-- ANTES DE ADOPTAR: IMAGEN INCLUIDA -->
+
+<section>
+<div class="container requirements-grid">
+
+<div class="requirements-image reveal">
+<img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e" alt="Animales en refugio">
+</div>
+
+<div class="reveal">
+<span class="section-label">Antes de adoptar</span>
+<h2 class="section-title">¿Qué debes considerar?</h2>
+<p class="section-description">Adoptar es una decisión importante que requiere compromiso. Antes de llevar un animal a casa, debes considerar sus necesidades y asegurarte de que podrás ofrecerle una vida digna.</p>
+<ul class="check-list">
+<li><span>✓</span> Contar con el acuerdo de las personas que viven en casa.</li>
+<li><span>✓</span> Tener un espacio adecuado y seguro.</li>
+<li><span>✓</span> Disponer de recursos para alimentación y atención veterinaria.</li>
+<li><span>✓</span> Dedicar tiempo a su cuidado, ejercicio y convivencia.</li>
+<li><span>✓</span> Comprender que puede necesitar paciencia durante su adaptación.</li>
+<li><span>✓</span> Aceptar que será una responsabilidad de largo plazo.</li>
+<li><span>✓</span> Evitar adoptar por impulso o solamente por su apariencia.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- ADAPTACIÓN -->
+
+<section class="soft">
+<div class="container">
+<span class="section-label">Un nuevo comienzo</span>
+<h2 class="section-title">La adaptación necesita paciencia.</h2>
+<p class="section-description">Al llegar a un hogar nuevo, un animal puede sentirse confundido, nervioso o inseguro. Cada uno tiene su propio ritmo de adaptación.</p>
+<div class="cards-grid">
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=85" alt="Perro descansando" loading="lazy"><div class="card-content"><h3>Prepara un espacio</h3><p>Ofrécele un lugar tranquilo donde pueda descansar y sentirse protegido sin ser molestado.</p></div></article>
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=800&q=85" alt="Persona conviviendo con mascota" loading="lazy"><div class="card-content"><h3>Respeta su ritmo</h3><p>No lo obligues a convivir o recibir caricias. Permite que se acerque cuando se sienta preparado.</p></div></article>
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=85" alt="Perro paseando" loading="lazy"><div class="card-content"><h3>Establece rutinas</h3><p>Mantén horarios y hábitos adecuados para su alimentación, descanso, higiene y actividad.</p></div></article>
+</div>
+</div>
+</section>
+
+<!-- COMPROMISO A LARGO PLAZO -->
+
+<section>
+<div class="container two-grid">
+<div class="photo reveal">
+<img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1100&q=85" alt="Perro acompañado por su familia" loading="lazy">
+</div>
+<div class="copy reveal">
+<span class="section-label">Compromiso de por vida</span>
+<h2 class="section-title">Adoptar no termina el día que llega a casa.</h2>
+<p>Un animal puede vivir muchos años y durante ese tiempo necesitará alimento, atención médica, tiempo, paciencia y un hogar seguro.</p>
+<p>Las circunstancias de una familia pueden cambiar, pero adoptar implica pensar responsablemente en el futuro del animal y buscar soluciones que protejan su bienestar.</p>
+<p>Si una familia atraviesa una situación que le impide continuar cuidándolo, debe solicitar orientación a la organización de adopción o a profesionales responsables, evitando abandonarlo.</p>
+</div>
+</div>
+</section>
+
+<!-- CUIDADOS -->
+
+<section class="soft" id="cuidados">
+<div class="container">
+<span class="section-label">Bienestar animal</span>
+<h2 class="section-title">Cuidados que necesitan todos los días.</h2>
+<p class="section-description">El bienestar animal implica atender sus necesidades físicas, de salud, de comportamiento y de convivencia.</p>
+<div class="care-grid">
+<article class="care-item reveal"><h3>🥣 Alimentación</h3><p>Proporciona alimento apropiado para su especie, edad y condición. Evita darle alimentos que puedan perjudicarlo.</p></article>
+<article class="care-item reveal"><h3>💧 Agua limpia</h3><p>Debe tener acceso constante a agua fresca y limpia, especialmente durante los días calurosos.</p></article>
+<article class="care-item reveal"><h3>🩺 Salud</h3><p>Realiza revisiones veterinarias, vacunación y desparasitación de acuerdo con las indicaciones profesionales.</p></article>
+<article class="care-item reveal"><h3>🧼 Higiene</h3><p>Mantén limpios sus espacios, recipientes, cama y accesorios. Sus necesidades de aseo dependen de cada especie.</p></article>
+<article class="care-item reveal"><h3>🏡 Espacio seguro</h3><p>Protégelo del clima extremo, evita riesgos en casa y proporciona un espacio donde pueda descansar.</p></article>
+<article class="care-item reveal"><h3>🧸 Actividad y compañía</h3><p>Ofrece oportunidades de juego, movimiento, exploración y convivencia adecuadas a sus necesidades.</p></article>
+<article class="care-item reveal"><h3>❤️ Trato digno</h3><p>Evita golpes, gritos y castigos. Utiliza métodos respetuosos y busca orientación profesional.</p></article>
+<article class="care-item reveal"><h3>🌤️ Protección del clima</h3><p>No lo dejes expuesto al sol intenso, frío extremo o lluvia sin un refugio apropiado.</p></article>
+<article class="care-item reveal"><h3>🧠 Enriquecimiento</h3><p>Proporciona juguetes seguros, actividades y estímulos que permitan expresar comportamientos naturales.</p></article>
+</div>
+</div>
+</section>
+
+<!-- PERROS Y GATOS -->
+
+<section style="background:#fff">
+<div class="container">
+<span class="section-label">Conoce sus necesidades</span>
+<h2 class="section-title">Perros y gatos: cuidados diferentes.</h2>
+<p class="section-description">Aunque ambos pueden ser excelentes compañeros, tienen comportamientos y necesidades particulares.</p>
+<div class="animal-grid">
+<article class="animal-card reveal">
+<img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1000&q=85" alt="Perro al aire libre" loading="lazy">
+<div><h3>🐕 Cuidados de los perros</h3><p>Necesitan actividad física, paseos seguros, socialización adecuada y entrenamiento respetuoso.</p><p>También requieren alimentación equilibrada, agua, higiene, atención veterinaria y compañía.</p><p>Sus necesidades de ejercicio dependen de su edad, salud y características individuales.</p></div>
+</article>
+<article class="animal-card reveal">
+<img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=85" alt="Gato descansando" loading="lazy">
+<div><h3>🐈 Cuidados de los gatos</h3><p>Necesitan espacios seguros, areneros limpios, lugares elevados y oportunidades para jugar y explorar.</p><p>Es importante ofrecerles rascadores y actividades que estimulen sus comportamientos naturales.</p><p>También necesitan atención veterinaria, alimentación apropiada y protección frente a peligros.</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- MALTRATO -->
+
+<section class="warning-section" id="denuncia">
+<div class="container">
+<span class="section-label">Prevención y atención</span>
+<h2 class="section-title">El maltrato animal no debe ignorarse.</h2>
+<p class="section-description">Reconocer una situación de riesgo y saber cómo actuar puede ayudar a proteger a un animal sin poner en peligro a otras personas.</p>
+
+<div class="warning-box reveal">
+<h3>¿Qué situaciones pueden ser señales de maltrato o abandono?</h3>
+<p>La falta persistente de alimento o agua, la ausencia de refugio, la falta de atención ante enfermedades, el abandono y las agresiones son situaciones preocupantes que deben atenderse.</p>
+</div>
+
+<div class="report-grid">
+<article class="report-card reveal"><h3>Abandono</h3><p>Dejar a un animal sin cuidados, protección o acceso a sus necesidades básicas puede poner en riesgo su salud y bienestar.</p></article>
+<article class="report-card reveal"><h3>Negligencia</h3><p>No atender sus necesidades de alimentación, higiene, espacio o atención veterinaria puede ocasionarle sufrimiento.</p></article>
+<article class="report-card reveal"><h3>Violencia</h3><p>Las agresiones físicas, el trato cruel y las condiciones que le provocan daño deben comunicarse a la autoridad competente.</p></article>
+</div>
+
+<h2 class="section-title" style="font-size:2rem;margin-top:45px">¿Cómo actuar ante un posible caso de maltrato?</h2>
+<p class="section-description">Sigue estos pasos de forma ordenada, segura y responsable.</p>
+
+<div class="steps" style="grid-template-columns:repeat(3,1fr)">
+<article class="step reveal"><div class="step-number">01</div><h3>Protege tu seguridad</h3><p>No confrontes a personas agresivas, no ingreses a propiedades ajenas y no intentes rescates peligrosos.</p></article>
+<article class="step reveal"><div class="step-number">02</div><h3>Observa la situación</h3><p>Identifica dónde ocurre, cuándo sucede, qué animal está involucrado y si existe un riesgo inmediato.</p></article>
+<article class="step reveal"><div class="step-number">03</div><h3>Reúne información</h3><p>Anota fechas, horarios, ubicación y una descripción objetiva de los hechos que observaste.</p></article>
+<article class="step reveal"><div class="step-number">04</div><h3>Documenta con seguridad</h3><p>Si es legal y seguro, conserva fotografías o videos tomados desde un lugar permitido. No te expongas para conseguirlos.</p></article>
+<article class="step reveal"><div class="step-number">05</div><h3>Presenta el reporte</h3><p>Comunícate con la autoridad municipal o estatal competente y pregunta qué procedimiento debes seguir.</p></article>
+<article class="step reveal"><div class="step-number">06</div><h3>Da seguimiento</h3><p>Conserva el folio o comprobante, pregunta por el estado del reporte y aporta información adicional si te la solicitan.</p></article>
+</div>
+
+<div class="warning-box" style="margin-top:28px">
+<h3>¿Qué evidencias pueden ser útiles?</h3>
+<p>Una descripción de los hechos, fecha, hora, ubicación, fotografías o videos obtenidos legalmente y datos de posibles testigos pueden ayudar a explicar el caso. Entrega la información a la autoridad y evita difundir datos personales o acusaciones no verificadas en redes sociales.</p>
+</div>
+
+<div class="warning-box">
+<h3>¿Cuándo y ante quién denunciar?</h3>
+<p>Si existe peligro inmediato para una persona, utiliza los servicios de emergencia correspondientes. Para casos de animales domésticos, como perros y gatos, normalmente se debe acudir a la autoridad municipal o estatal de protección animal, al área de atención ciudadana o a la fiscalía estatal cuando los hechos puedan constituir un delito.</p>
+<p style="margin-top:10px">PROFEPA atiende asuntos de competencia federal, incluidos determinados casos relacionados con fauna silvestre. No todos los reportes de maltrato animal corresponden a esta institución.</p>
+<p style="margin-top:12px"><a class="text-link" href="https://www.gob.mx/profepa/es/articulos/preguntas-frecuentes-414662" target="_blank" rel="noopener">Consultar orientación oficial de PROFEPA ↗</a></p>
+</div>
+
+<div class="warning-box">
+<h3>¿Qué pasa después de presentar un reporte?</h3>
+<p>La autoridad competente determina si corresponde iniciar una inspección, investigación u otro procedimiento. Conserva el número de reporte, atiende las solicitudes de información y pregunta por los canales oficiales para consultar su avance. No intentes intervenir por tu cuenta.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ASOCIACIONES -->
+
+<section id="asociaciones">
+<div class="container">
+<span class="section-label">Redes de apoyo</span>
+<h2 class="section-title">Asociaciones y organizaciones de protección animal.</h2>
+<p class="section-description">Los refugios y asociaciones pueden apoyar mediante rescates, atención, rehabilitación, campañas de adopción y orientación. Estos son algunos contactos que aparecen en el directorio de adopción de SENASICA.</p>
+
+<div class="association-grid">
+<article class="association reveal">
+<h3>Fundación Manuel Rozada Cuéllar</h3>
+<p><strong>Labor:</strong> organización incluida en el directorio de adopción consultado. Verifica directamente sus servicios y actividades actuales.</p>
+<p><strong>Ubicación:</strong> Av. Hidalgo No. 28, Col. Lomas de Guadalupe, Cuautitlán Izcalli, Estado de México.</p>
+<p><strong>Teléfono:</strong> 55 2121 2230</p>
+<a href="https://fundacionrozada.org/" target="_blank" rel="noopener">Visitar sitio web ↗</a>
+</article>
+
+<article class="association reveal">
+<h3>Fundación Guarida Perruna</h3>
+<p><strong>Labor:</strong> organización registrada en el directorio de adopción. Consulta directamente sus actividades y condiciones de apoyo.</p>
+<p><strong>Ubicación:</strong> Paseo de la Escondida, Tecámac, Estado de México.</p>
+<p><strong>Teléfono:</strong> 55 5050 7097</p>
+<a href="https://www.facebook.com/share/1BGhmQrGAV/" target="_blank" rel="noopener">Consultar página ↗</a>
+</article>
+
+<article class="association reveal">
+<h3>Movimientos Manos Solidarias</h3>
+<p><strong>Labor:</strong> organización incluida en el directorio consultado. Contacta para conocer sus programas y formas de colaboración.</p>
+<p><strong>Ubicación:</strong> Calle Leyes de Reforma Mz. 12 Lt. 64, Col. Melchor Ocampo, Chimalhuacán, Estado de México.</p>
+<p><strong>Teléfono:</strong> 56 3661 1048</p>
+<a href="https://www.facebook.com/share/17o6oLYp62/" target="_blank" rel="noopener">Consultar página ↗</a>
+</article>
+
+<article class="association reveal">
+<h3>Evolución Ideológica Rekydan A.C.</h3>
+<p><strong>Labor:</strong> asociación incluida en el directorio consultado. Verifica sus servicios y actividades vigentes directamente.</p>
+<p><strong>Ubicación:</strong> Villalpando lote 5, zona de San Martín, Estado de México.</p>
+<a href="https://www.facebook.com/share/1Chg46QLkE/" target="_blank" rel="noopener">Consultar página ↗</a>
+</article>
+</div>
+
+<p class="small-note">Importante: los datos proceden del directorio consultado de SENASICA y pueden cambiar. Confirma teléfonos, domicilios y disponibilidad antes de acudir. Este listado no es un directorio nacional completo.</p>
+<a class="btn btn-outline" href="https://www.gob.mx/senasica/documentos/adopta-un-perro" target="_blank" rel="noopener" style="margin-top:20px">Consultar directorio de SENASICA ↗</a>
+</div>
+</section>
+
+<!-- MARCO LEGAL -->
+
+<section class="soft" id="leyes">
+<div class="container">
+<span class="section-label">Marco legal mexicano</span>
+<h2 class="section-title">La protección animal también es responsabilidad legal.</h2>
+<p class="section-description">En México existen disposiciones federales, estatales y municipales relacionadas con el ambiente, la sanidad y el trato hacia los animales. La autoridad competente depende del tipo de animal y de los hechos.</p>
+
+<div class="law-list">
+<article class="law reveal">
+<h3>Ley General del Equilibrio Ecológico y la Protección al Ambiente</h3>
+<p>Contiene disposiciones relacionadas con la protección ambiental. El artículo 87 Bis 2 establece principios para el trato digno y respetuoso de los animales, como procurar agua, alimento, condiciones adecuadas, atención médica y la posibilidad de expresar comportamientos naturales.</p>
+<a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGEEPA.pdf" target="_blank" rel="noopener">Consultar texto legal ↗</a>
+</article>
+
+<article class="law reveal">
+<h3>Ley General de Vida Silvestre</h3>
+<p>Regula aspectos relacionados con la conservación, protección y aprovechamiento sustentable de la vida silvestre en México. Es relevante para asuntos de fauna silvestre dentro de su ámbito de aplicación.</p>
+<a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGVS.pdf" target="_blank" rel="noopener">Consultar texto legal ↗</a>
+</article>
+
+<article class="law reveal">
+<h3>Ley Federal de Sanidad Animal</h3>
+<p>Establece disposiciones relacionadas con la sanidad animal, prevención y control de enfermedades, así como aspectos de bienestar animal dentro de su ámbito de aplicación.</p>
+<a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFSA.pdf" target="_blank" rel="noopener">Consultar texto legal ↗</a>
+</article>
+
+<article class="law reveal">
+<h3>Leyes estatales de protección animal</h3>
+<p>Las entidades federativas cuentan con disposiciones propias sobre protección y bienestar animal. Estas normas pueden establecer obligaciones, procedimientos y sanciones específicas.</p>
+<a href="https://www.ordenjuridico.gob.mx/" target="_blank" rel="noopener">Consultar orden jurídico mexicano ↗</a>
+</article>
+
+<article class="law reveal">
+<h3>Reglamentos municipales</h3>
+<p>Los municipios pueden contar con reglamentos y áreas de atención para asuntos como animales domésticos, control animal, reportes y protección local.</p>
+<a href="https://www.gob.mx/" target="_blank" rel="noopener">Consultar portal del Gobierno de México ↗</a>
+</article>
+</div>
+
+<h2 class="section-title" style="font-size:2rem;margin-top:42px">¿Qué autoridad puede intervenir?</h2>
+<div class="help-grid">
+<article class="help-card reveal"><div class="help-icon">🏙️</div><h3>Autoridades municipales</h3><p>Son un punto de orientación para reportes relacionados con animales domésticos y servicios locales, según las atribuciones del municipio.</p></article>
+<article class="help-card reveal"><div class="help-icon">⚖️</div><h3>Fiscalías estatales</h3><p>Pueden recibir denuncias cuando los hechos puedan constituir un delito conforme a la legislación aplicable en la entidad.</p></article>
+<article class="help-card reveal"><div class="help-icon">🌿</div><h3>PROFEPA</h3><p>Interviene en asuntos ambientales de competencia federal, incluidos determinados casos relacionados con fauna silvestre.</p></article>
+</div>
+<p class="small-note">Nota: las competencias y procedimientos varían según el estado, municipio, especie y circunstancias. Consulta siempre la versión vigente de las leyes y reglamentos aplicables. Esta información es educativa y no sustituye asesoría jurídica.</p>
+</div>
+</section>
+
+<!-- FUENTES -->
+
+<section>
+<div class="container">
+<span class="section-label">Información confiable</span>
+<h2 class="section-title">Fuentes oficiales para seguir aprendiendo.</h2>
+<p class="section-description">Consultar fuentes institucionales ayuda a verificar información, conocer los procedimientos y encontrar orientación confiable.</p>
+<div class="help-grid">
+<article class="help-card reveal"><div class="help-icon">🏛️</div><h3>PROFEPA</h3><p>Información oficial sobre protección ambiental, fauna silvestre y orientación sobre asuntos de su competencia.</p><a class="text-link" href="https://www.gob.mx/profepa" target="_blank" rel="noopener">Visitar sitio ↗</a></article>
+<article class="help-card reveal"><div class="help-icon">🐾</div><h3>SENASICA</h3><p>Información sobre sanidad animal y recursos relacionados con adopción.</p><a class="text-link" href="https://www.gob.mx/senasica" target="_blank" rel="noopener">Visitar sitio ↗</a></article>
+<article class="help-card reveal"><div class="help-icon">📚</div><h3>Cámara de Diputados</h3><p>Consulta leyes federales y documentos legislativos oficiales.</p><a class="text-link" href="https://www.diputados.gob.mx/" target="_blank" rel="noopener">Visitar sitio ↗</a></article>
+</div>
+</div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+
+<section style="background:#fff">
+<div class="container">
+<span class="section-label">Resolvemos tus dudas</span>
+<h2 class="section-title">Preguntas frecuentes.</h2>
+<div class="faq-container">
+
+<div class="faq">
+<button class="faq-question">¿Por qué es importante adoptar responsablemente?<span>+</span></button>
+<div class="faq-answer"><p>Porque adoptar significa comprometerse con la vida y el bienestar de un animal. No es una decisión temporal ni un regalo que pueda abandonarse cuando cambien las circunstancias.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Qué hago si encuentro un animal abandonado?<span>+</span></button>
+<div class="faq-answer"><p>Primero verifica tu seguridad y la del animal. Si es posible, busca ayuda de una persona adulta, una organización local o la autoridad de protección animal correspondiente.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Los animales necesitan atención veterinaria?<span>+</span></button>
+<div class="faq-answer"><p>Sí. Las revisiones periódicas permiten prevenir o detectar problemas de salud. Ante síntomas de enfermedad, consulta con un profesional veterinario.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Puedo ayudar aunque no pueda adoptar?<span>+</span></button>
+<div class="faq-answer"><p>Claro. Puedes compartir información, apoyar refugios, colaborar en campañas o ayudar a difundir animales que buscan un hogar responsable.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Qué significa el bienestar animal?<span>+</span></button>
+<div class="faq-answer"><p>Significa procurar condiciones adecuadas de salud, alimentación, ambiente, comportamiento y trato, de acuerdo con las necesidades de cada animal.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Qué hago si conozco un caso de maltrato?<span>+</span></button>
+<div class="faq-answer"><p>Evita ponerte en peligro. Busca apoyo, reúne información de manera segura y comunícate con la autoridad estatal o municipal competente. Si eres menor de edad, pide ayuda a una persona adulta de confianza.</p></div>
+</div>
+
+<div class="faq">
+<button class="faq-question">¿Por qué no se debe comprar o adoptar por impulso?<span>+</span></button>
+<div class="faq-answer"><p>Porque un animal necesita atención y recursos durante toda su vida. La decisión debe considerar el compromiso, las condiciones del hogar y sus necesidades reales.</p></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CIERRE -->
+
+<section class="final-cta">
+<div class="container reveal">
+<h2>El cambio comienza con nosotros.</h2>
+<p>Cada acción cuenta. Un poco más de conciencia, respeto y responsabilidad puede hacer una gran diferencia en la vida de los animales.</p>
+<a href="#inicio" class="btn">Volver al inicio ↑</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h3>🐾 Familia Animal</h3>
+<p>Un espacio para promover el respeto, la protección, el cuidado y la adopción responsable de los animales.</p>
+</div>
+<div>
+<h3>Explora</h3>
+<div class="footer-links">
+<a href="#nosotros">Quiénes somos</a>
+<a href="#familias">Familias y animales</a>
+<a href="#adopcion">Adopción</a>
+<a href="#cuidados">Cuidados</a>
+<a href="#denuncia">Denuncias</a>
+</div>
+</div>
+<div>
+<h3>Información</h3>
+<div class="footer-links">
+<a href="#asociaciones">Asociaciones</a>
+<a href="#leyes">Leyes de México</a>
+<a href="https://www.gob.mx/profepa" target="_blank" rel="noopener">PROFEPA ↗</a>
+<a href="https://www.gob.mx/senasica" target="_blank" rel="noopener">SENASICA ↗</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Familia Animal. Promoviendo una convivencia responsable y respetuosa.
+</div>
+</div>
+</footer>
+
+<script>
+// MENÚ RESPONSIVE
+
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+const open=navLinks.classList.toggle("open");
+menuBtn.textContent=open?"✕":"☰";
+menuBtn.setAttribute("aria-expanded",String(open));
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+link.addEventListener("click",()=>{
+navLinks.classList.remove("open");
+menuBtn.textContent="☰";
+menuBtn.setAttribute("aria-expanded","false");
+});
+});
+
+// PREGUNTAS FRECUENTES
+
+document.querySelectorAll(".faq-question").forEach(button=>{
+button.addEventListener("click",()=>{
+const current=button.parentElement;
+const answer=current.querySelector(".faq-answer");
+const active=current.classList.contains("active");
+
+document.querySelectorAll(".faq").forEach(item=>{
+item.classList.remove("active");
+item.querySelector(".faq-answer").style.maxHeight=null;
+});
+
+if(!active){
+current.classList.add("active");
+answer.style.maxHeight=answer.scrollHeight+"px";
+}
+});
+});
+
+// ANIMACIONES AL DESPLAZARSE
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+observer.unobserve(entry.target);
+}
+});
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(element=>{
+observer.observe(element);
+});
+</script>
+
+</body>
+</html>
